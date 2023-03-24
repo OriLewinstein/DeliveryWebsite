@@ -1,29 +1,25 @@
-const form = document.querySelector('form');
-const table = document.querySelector('table');
-const tbody = document.querySelector('#delivery-table');
-const inputs = document.querySelectorAll('input');
-
 function addDelivery() {
-  const destinationInput = document.querySelector('#destination');
-  const priceInput = document.querySelector('#price');
-  const customerInput = document.querySelector('#customer');
-
-  // Create new row and cells
-  const newRow = tbody.insertRow();
-  const destinationCell = newRow.insertCell();
-  const priceCell = newRow.insertCell();
-  const customerCell = newRow.insertCell();
-
-  // Add input values to cells
-  destinationCell.textContent = destinationInput.value;
-  priceCell.textContent = priceInput.value;
-  customerCell.textContent = customerInput.value;
-
-  // Clear input fields
-  inputs.forEach(input => input.value = "");
-}
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  addDelivery();
-});
+    const destinationInput = document.querySelector('#destination');
+    const priceInput = document.querySelector('#price');
+    const customerInput = document.querySelector('#customer');
+    const deliveryTable = document.querySelector('#delivery-table');
+  
+    if (!destinationInput.value || !priceInput.value || !customerInput.value) {
+      alert("Please fill in all fields!");
+      return;
+    }
+  
+    const newRow = deliveryTable.insertRow();
+    const destinationCell = newRow.insertCell();
+    const priceCell = newRow.insertCell();
+    const customerCell = newRow.insertCell();
+    
+    destinationCell.textContent = destinationInput.value;
+    priceCell.textContent = priceInput.value;
+    customerCell.textContent = customerInput.value;
+  
+    destinationInput.value = "";
+    priceInput.value = "";
+    customerInput.value = "";
+  }
+  
